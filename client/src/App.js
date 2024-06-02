@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Homepage from './pages/homepage'
-import { showCountry } from './pages/countries'
+import { showCountry, listCountries } from './pages/countries'
 
 function App() {
   const [countries, setCountries] = useState([]);
@@ -12,8 +12,16 @@ function App() {
     ))
     }, []);
 
+    useEffect(() => {
+      fetch('/countries')
+      .then((res) => res.json()
+      .then((data) => setCountries(data)
+      ))
+    }, []);
+
   return (
-    showCountry(countries[0])
+    //showCountry(countries[0])
+    listCountries(countries)
     //Homepage()
   )
 }
