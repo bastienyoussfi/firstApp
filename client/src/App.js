@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import Homepage from './pages/homepage'
+import { showCountry } from './pages/countries'
 
 function App() {
   const [countries, setCountries] = useState([]);
@@ -11,17 +13,8 @@ function App() {
     }, []);
 
   return (
-    <div>
-
-        {(typeof countries === 'undefined') ? (
-          <p> Loading... </p>
-        ) : ( 
-          countries.map((country, i) => 
-          <p key={i}> <h1>{country.name}</h1> 
-          <h2>{country.continent}</h2> </p>)
-        )}
-      
-    </div>
+    showCountry(countries[0])
+    //Homepage()
   )
 }
 
